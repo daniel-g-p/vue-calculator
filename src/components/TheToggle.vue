@@ -137,7 +137,7 @@ export default {
     padding: 0.25rem 0;
   }
   &__bar {
-    background-color: $color-bg-2;
+    background-color: $color-bg-3;
     display: block;
     height: 1.25rem;
     width: 3.25rem;
