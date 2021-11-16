@@ -1,6 +1,6 @@
 <template>
   <div class="output">
-    <p class="output__result">10</p>
+    <p class="output__result"><slot></slot></p>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
   position: relative;
   border-radius: 0.5rem;
   &__result {
-
+    height: 1em;
   }
 }
 </style>

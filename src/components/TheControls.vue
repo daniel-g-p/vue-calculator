@@ -5,6 +5,7 @@
       :key="button.label"
       :class="`controls--${button.label}`"
       :color="button.class"
+      @click="clickButton(button.label)"
       >{{ button.content }}</base-button
     >
   </div>
@@ -12,7 +13,7 @@
 
 <script>
 export default {
-  setup() {
+  setup(props, context) {
     const buttons = [
       { content: 1, label: "1", class: 1 },
       { content: 2, label: "2", class: 1 },
@@ -31,10 +32,12 @@ export default {
       { content: ".", label: "point", class: 1 },
       { content: "=", label: "equal", class: 3 },
       { content: "del", label: "delete", class: 2 },
-      { content: "ac", label: "clear", class: 2 },
-      { content: "ans", label: "answer", class: 2 },
+      { content: "Clear", label: "clear", class: 2 },
     ];
-    return { buttons };
+    const clickButton = (label) => {
+      context.emit("button-click", label);
+    };
+    return { buttons, clickButton };
   },
 };
 </script>
@@ -110,17 +113,13 @@ export default {
     grid-row: 2;
     grid-column: 4;
   }
-  &--answer {
-    grid-row: 5;
-    grid-column: 1;
-  }
   &--delete {
     grid-row: 1;
     grid-column: 4;
   }
   &--clear {
     grid-row: 5;
-    grid-column: 2;
+    grid-column: 1 / span 2;
   }
   &--equal {
     grid-row: 5;
