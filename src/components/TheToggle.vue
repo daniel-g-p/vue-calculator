@@ -45,19 +45,19 @@ export default {
         keys5: "hsl(45, 7%, 89%)",
         keys6: "hsl(35, 11%, 61%)",
         text1: "hsl(60, 10%, 19%)",
-        text2: "hsl(0, 0, 100%)",
+        text2: "hsl(0, 0%, 100%)",
       },
       theme3: {
         bg1: "hsl(268, 75%, 9%)",
-        bg2: "hsl(268, 71%, 12%)",
-        bg3: "hsl(268, 71%, 12%)",
+        bg2: "hsl(268, 25%, 20%)",
+        bg3: "hsl(268, 25%, 20%)",
         keys1: "hsl(281, 89%, 26%)",
         keys2: "hsl(285, 91%, 52%)",
         keys3: "hsl(176, 100%, 44%)",
         keys4: "hsl(177, 92%, 70%)",
         keys5: "hsl(268, 47%, 21%)",
         keys6: "hsl(290, 70%, 36%)",
-        text1: "hsl(198, 20%, 13%)",
+        text1: "hsl(198, 20%, 75%)",
         text2: "hsl(52, 100%, 62%)",
       },
     };
@@ -137,7 +137,7 @@ export default {
     padding: 0.25rem 0;
   }
   &__bar {
-    background-color: $color-bg-3;
+    background-color: $color-bg-2;
     display: block;
     height: 1.25rem;
     width: 3.25rem;

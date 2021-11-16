@@ -37,7 +37,8 @@ export default {
 .calculator {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 1rem;
+  max-width: 24rem;
   &__toggle {
     justify-self: end;
   }
