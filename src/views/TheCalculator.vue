@@ -7,7 +7,9 @@
       <the-toggle></the-toggle>
     </div>
     <div class="calculator__output">
-      <the-output>{{ expression }}</the-output>
+      <the-output :highlighted="resultIsHighlighted">{{
+        expression
+      }}</the-output>
     </div>
     <div class="calculator__controls">
       <the-controls @button-click="clickButton"></the-controls>
@@ -31,7 +33,7 @@ export default {
     TheControls,
   },
   setup() {
-    let result = 0;
+    let resultIsHighlighted = ref(false);
     let operationPending = true;
     const expression = ref("");
     const replaceLastCharacter = (character) => {
@@ -51,11 +53,8 @@ export default {
     };
     const clickButton = (label) => {
       if (label === "clear") {
-        result = 0;
         expression.value = "";
         operationPending = true;
-      } else if (label === "equal") {
-        expression.value = `${result}`;
       } else if (label === "delete") {
         const expressionLength = expression.value.length;
         expression.value = expression.value.slice(0, expressionLength - 1);
@@ -73,12 +72,20 @@ export default {
         setOperation("×");
       } else if (label === "division") {
         setOperation("/");
+      } else if (label === "equal") {
+        const result = eval(expression.value.replaceAll("×", "*"));
+        expression.value = `${Math.round(result * 100) / 100}`;
+        operationPending = false;
+        resultIsHighlighted.value = true;
+        setTimeout(() => {
+          resultIsHighlighted.value = false;
+        }, 500);
       } else {
         expression.value += label;
         operationPending = false;
       }
     };
-    return { expression, clickButton };
+    return { expression, clickButton, resultIsHighlighted };
   },
 };
 </script>
